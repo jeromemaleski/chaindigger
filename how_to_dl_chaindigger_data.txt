@@ -1,0 +1,73 @@
+
+##download chaindigger data 
+#note these are examples of one interaction, modify as needed
+
+1 power on camera box
+2 connect to camera box wifi with laptop
+pswd: goodlife
+
+3 open terminal
+ssh ubuntu@<ip address> #ip address on side of camera box
+password: 0rbital
+
+4 go to mnt and find directory images are stored in
+
+5 folder is too big to open so look in folder using ls over a range
+
+#list files in "folder" with range of times in this case all files taken from 1:40pm till 1:50pm on 2023 10 24 this is about 1200 images
+
+ls folder/*20231024_134*
+or
+find folder -type f -name "*20231024_134*"
+
+6 make directory to copy a subset of files
+mkdir subset
+
+7 copy files in range to subset directory
+
+#this finds all files in folder "set" that include "*20231024_134*" and copies to folder "subset"
+
+find set -type f -name "*20231024_134*" -exec cp {} subset \;
+find chaindigger -type f -name "*20240904_134*" -exec cp {} selec2 \;
+20240905_175
+20240903_172
+
+8 maybe get ~1000 images from 4 different times, try to get some morning and some afternoon. Total 4000 images 
+
+8.1 zip folder
+zip -r chain_images.zip subset
+unzip chain_images.zip
+
+9 use FileZilla to copy subset folder from rpi to laptop
+or
+scp -P <SERVER_PORT> <PATH_TO_LOCAL_FILE> <SERVER_USER@SERVER_IP_ADDRESS>:<PATH_TO_DESTINATION_FOLDER>
+scp -P <SERVER_PORT> <SERVER_USER@SERVER_IP_ADDRESS>:<PATH_TO_REMOTE_FILE> <PATH_TO_LOCAL_DESTINATION_FOLDER>
+
+from laptop terminal use scp to copy remote folder "subset" in mnt on remote pi
+scp ubuntu@10.10.0.30:/mnt/data/chain_images2.zip ~/
+
+10 remove any temporary folders
+rm -rf subset
+
+11 on laptop convert raw to rgb and check image
+
+#alternativly remove and mount the hard drive in windows:
+
+Mounting ext4 in windows
+
+Connecting to ext on windows
+https://windowsreport.com/ext4-windows-11/
+https://devblogs.microsoft.com/commandline/access-linux-filesystems-in-windows-and-wsl-2/
+
+Use powershell and wsl
+Open powershell as administrator
+wmic diskdrive list brief
+wsl --mount \\.\PHYSICALDRIVE1
+Or
+wsl --mount \\.\PHYSICALDRIVE2 --partition 1
+
+Can browse in explorer
+\\wsl.localhost\Ubuntu-24.04\mnt\
+
+
+
