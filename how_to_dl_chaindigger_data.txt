@@ -4,6 +4,8 @@
 
 1 power on camera box
 2 connect to camera box wifi with laptop
+R (second) camera: GL-AR300M02e-NOR
+L (primary) camera: GL-AR300M02e-NOR
 pswd: goodlife
 
 3 open terminal
@@ -68,6 +70,7 @@ wsl --mount \\.\PHYSICALDRIVE2 --partition 1
 
 Can browse in explorer
 \\wsl.localhost\Ubuntu-24.04\mnt\
+
 
 
 
