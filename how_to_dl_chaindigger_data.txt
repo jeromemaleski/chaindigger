@@ -1,15 +1,17 @@
 
 ##download chaindigger data 
-#note these are examples of one interaction, modify as needed
+#note these are examples, modify as needed
 
 1 power on camera box
 2 connect to camera box wifi with laptop
-R (second) camera: GL-AR300M02e-NOR
-L (primary) camera: GL-AR300M02e-NOR
+Primary camera (GL-AR300M-068-NOR_31)
+Secondary camera (GL-AR300M-068-NOR)
 pswd: goodlife
 
 3 open terminal
 ssh ubuntu@<ip address> #ip address on side of camera box
+Primary camera (10.10.0.31)
+Secondary camera (10.10.0.30)
 password: 0rbital
 
 4 go to mnt and find directory images are stored in

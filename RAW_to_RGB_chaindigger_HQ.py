@@ -3,13 +3,14 @@
 # Enter raw image directory path
 # saved image path
 # Replace width and height with the actual full dimensions of your raw data.
-raw_directory_path_str = '/Users/jm/Data/20241030_cam1' # CHANGE THIS TO YOUR DIRECTORY PATH
+raw_directory_path_str = '/Users/jm/Data/20250903-primary' # CHANGE THIS TO YOUR DIRECTORY PATH
 image_width = 1440  # CHANGE THIS TO YOUR IMAGE WIDTH
 image_height = 1080 # CHANGE THIS TO YOUR IMAGE HEIGHT
-output_directory_path_str = '/Users/jm/Data/20241030_image' # CHANGE THIS TO YOUR DESIRED OUTPUT DIRECTORY
+output_directory_path_str = '/Users/jm/Data/20250903-test' # CHANGE THIS TO YOUR DESIRED OUTPUT DIRECTORY
 
 # Optional: Apply adaptive histogram equalization
 histogram_eq = True # Set to False to disable
+clip_limit= 0.1 # Clip limit for adaptive histogram equalization
 
 # Bayer pattern of the sensor, e.g., 'RGGB', 'GRBG', 'GBRG', 'BGGR'
 # The colour-demosaicing library supports various patterns.
@@ -217,7 +218,7 @@ def main():
                 if histogram_eq:
                     print(f"Applying adaptive histogram equalization to {raw_filepath.name}...")
                     # Input to equalize_adapthist should be float [0,1]
-                    img_equalized_float_0_1 = exposure.equalize_adapthist(img_float_0_1, clip_limit=0.03)
+                    img_equalized_float_0_1 = exposure.equalize_adapthist(img_float_0_1, clip_limit=clip_limit)
                     # Output is float [0,1]
                     
                     # Convert the equalized [0,1] float image to 0-255 uint8 for saving
