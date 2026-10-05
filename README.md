@@ -1,4 +1,6 @@
 # Chaindigger camera 
+
+> **Superseded (2026-10-05)** by [chaindigger_pipeline](https://github.com/jeromemaleski/chaindigger_pipeline) (`RAW_to_RGB_chaindigger_HQ.py` is maintained there). Kept as is for reference and for the camera-box notes in `how_to_dl_chaindigger_data.txt`.
 For interacting with chaindigger camera and files
 
 ## Interactively explore raw image and histogram
